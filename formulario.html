@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulário de Freelancer</title>
+</head>
+<body>
+  <h2>Formulário de Freelancer</h2>
+  <form id="freelancerForm" onsubmit="return validarFormulario()" enctype="multipart/form-data">
+    <label for="nome">Nome *</label><br>
+    <input type="text" id="nome" name="nome" required placeholder="Insira seu nome"><br><br>
+
+    <label for="sobrenome">Sobrenome *</label><br>
+    <input type="text" id="sobrenome" name="sobrenome" required placeholder="Insira seu sobrenome"><br><br>
+
+    <label for="telefone">Telefone *</label><br>
+    <input type="tel" id="telefone" name="telefone" required pattern="\(\d{2}\)\d{5}-\d{4}" placeholder="(99)99999-9999"><br><br>
+
+    <label for="email">E-mail *</label><br>
+    <input type="email" id="email" name="email" required placeholder="Insira seu e-mail"><br><br>
+
+    <label for="mensagem">Mensagem *</label><br>
+    <textarea id="mensagem" name="mensagem" rows="4" cols="40" required placeholder="Informe o que deseja."></textarea><br><br>
+
+    <label for="lingua">Língua</label><br>
+    <select id="lingua" name="lingua">
+      <option value="pt-br">Português (pt-br)</option>
+      <option value="en">Inglês</option>
+      <option value="es">Espanhol</option>
+      <option value="fr">Francês</option>
+    </select><br><br>
+
+    <label for="prototipo">Protótipo (Requisitos)</label><br>
+    <input type="file" id="prototipo" name="prototipo" accept=".pdf, .doc, .docx, .jpeg, .jpg, .png"><br><br>
+
+    <label for="linguagens">As linguagens que você prefere?</label><br>
+    <select id="linguagens" name="linguagens[]" multiple size="4">
+      <option value="Java">Java</option>
+      <option value="C">C</option>
+      <option value="C++">C++</option>
+      <option value="PHP">PHP</option>
+      <option value="Python">Python</option>
+    </select><br>
+    <small>(Para fazer várias escolhas, mantenha a tecla CTRL pressionada)</small><br><br>
+
+    <label>Banco de Dados</label><br>
+    <input type="radio" name="bd" value="MySQL"> MySQL
+    <input type="radio" name="bd" value="PostgreSQL" checked> PostgreSQL
+    <input type="radio" name="bd" value="MongoDB"> MongoDB
+    <input type="radio" name="bd" value="N/A"> N/A
+    <input type="radio" name="bd" value="Outra"> Outra<br><br>
+
+    <label>Turno para Reuniões *</label><br>
+    <input type="checkbox" name="turno[]" value="manha"> Manhã
+    <input type="checkbox" name="turno[]" value="tarde"> Tarde
+    <input type="checkbox" name="turno[]" value="noite"> Noite<br><br>
+
+    <label for="horario">Horário Sugerido</label><br>
+    <input type="time" id="horario" name="horario"><br><br>
+
+    <label for="dataEntrega">Data Prevista de Entrega *</label><br>
+    <input type="date" id="dataEntrega" name="dataEntrega" required><br><br>
+
+    <button type="submit">Enviar</button>
+    <button type="reset">Limpar</button>
+
+    <p><small>* Campos Obrigatórios</small></p>
+  </form>
+
+  <script>
+    function validarFormulario() {
+      const telefone = document.getElementById('telefone').value;
+      const telefoneRegex = /^\(\d{2}\)\d{5}-\d{4}$/;
+
+      if (!telefoneRegex.test(telefone)) {
+        alert("Por favor, insira um telefone válido no formato (99)99999-9999.");
+        return false;
+      }
+
+      return true; // permite envio
+    }
+  </script>
+</body>
+</html>
